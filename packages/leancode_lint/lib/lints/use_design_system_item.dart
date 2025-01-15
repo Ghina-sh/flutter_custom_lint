@@ -21,7 +21,6 @@ final class UseDesignSystemItemConfig {
               (
                 name: (forbidden as Map)['instead_of'] as String,
                 packageName: forbidden['from_package'] as String,
-                message: forbidden['message'] as String,
               ),
           ],
         );
