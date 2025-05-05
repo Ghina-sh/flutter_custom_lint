@@ -1,3 +1,20 @@
+## 2.1.2
+
+- Fix logging response bodies
+
+## 2.1.1
+
+- Downgrade `sensors_plus` dependency to `^6.0.0`
+- Downgrade `share_plus` dependency to `^10.0.0`
+
+## 2.1.0
+
+- Bump minimum Flutter version to 3.27.0
+- Bump minimum Dart version to 3.6.0
+- Bump `sensors_plus` dependency to `^6.1.1`
+- Bump `share_plus` dependency to `^10.1.4`
+- Bump `leancode_lint` dependency to `^15.0.0`
+
 ## 2.0.0
 
 - Bump `rxdart` dependency to `^0.28.0`

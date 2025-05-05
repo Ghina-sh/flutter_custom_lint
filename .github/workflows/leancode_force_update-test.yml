@@ -1,15 +1,15 @@
-name: leancode_hooks test
+name: leancode_force_update test
 
 on:
   push:
     branches: [master]
-    tags-ignore: ['leancode_hooks-v*']
+    tags-ignore: ['leancode_force_update-v*']
     paths:
-      - 'packages/leancode_hooks/**'
+      - 'packages/leancode_force_update/**'
   pull_request:
     branches: [master]
     paths:
-      - 'packages/leancode_hooks/**'
+      - 'packages/leancode_force_update/**'
 
 jobs:
   test:
@@ -20,15 +20,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - version: 3.27.x
-
+          - version: 3.24.x
     defaults:
       run:
-        working-directory: packages/leancode_hooks
+        working-directory: packages/leancode_force_update
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -44,17 +43,11 @@ jobs:
         run: flutter pub get
 
       - name: Run analyzer
-        run: |
-          flutter analyze
-          dart run custom_lint
+        run: flutter analyze
 
-      - name: Run tests with coverage
-        run: flutter test --coverage
+      - name: Run tests
+        run: flutter test
 
       - name: Dry run pub publish
         # We don't want it to fail the CI, it's just to see how would `pub publish` behave.
         run: flutter pub publish --dry-run || true
-
-      - uses: codecov/codecov-action@v1
-        with:
-          flags: leancode_hooks
