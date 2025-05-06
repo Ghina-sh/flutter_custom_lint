@@ -1,8 +1,8 @@
-name: leancode_hooks publish
+name: leancode_force_update publish
 
 on:
   push:
-    tags: ['leancode_hooks-v*']
+    tags: ['leancode_force_update-v*']
 
 jobs:
   publish:
@@ -12,27 +12,28 @@ jobs:
 
     permissions:
       id-token: write
+      contents: write
 
     defaults:
       run:
-        working-directory: packages/leancode_hooks
+        working-directory: packages/leancode_force_update
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: 3.6
+          sdk: 3.5.3
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 3.27.x
+          flutter-version: 3.24.x
           cache: true
 
       - name: Publish and release
         uses: leancodepl/mobile-tools/.github/actions/pub-release@pub-release-v1
         with:
-          path: packages/leancode_hooks
+          path: packages/leancode_force_update
